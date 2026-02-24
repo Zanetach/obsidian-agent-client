@@ -672,7 +672,9 @@ function DiffRenderer({
 	return (
 		<div className="agent-client-tool-call-diff">
 			{isNewFile(diff) ? (
-				<div className="agent-client-diff-line-info">{t(language, "newFile")}</div>
+				<div className="agent-client-diff-line-info">
+					{t(language, "newFile")}
+				</div>
 			) : null}
 			<div className="agent-client-tool-call-diff-content">
 				{visibleLines.map((line, idx) => renderLine(line, idx))}
@@ -684,7 +686,9 @@ function DiffRenderer({
 				>
 					<span className="agent-client-diff-expand-text">
 						{isCollapsed
-							? t(language, "moreLines", { count: remainingLines })
+							? t(language, "moreLines", {
+									count: remainingLines,
+								})
 							: t(language, "collapse")}
 					</span>
 					<span className="agent-client-diff-expand-icon">

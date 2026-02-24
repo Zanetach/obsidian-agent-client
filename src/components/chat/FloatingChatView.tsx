@@ -128,7 +128,10 @@ export class FloatingViewContainer implements IChatViewContainer {
 	// ============================================================
 
 	getDisplayName(): string {
-		return this.callbacks?.getDisplayName() ?? tApp(this.plugin.app, "chatDisplayName");
+		return (
+			this.callbacks?.getDisplayName() ??
+			tApp(this.plugin.app, "chatDisplayName")
+		);
 	}
 
 	onActivate(): void {

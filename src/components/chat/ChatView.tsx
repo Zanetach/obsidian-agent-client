@@ -747,7 +747,10 @@ export class ChatView extends ItemView implements IChatViewContainer {
 	}
 
 	getDisplayName(): string {
-		return this.getDisplayNameCallback?.() ?? tApp(this.plugin.app, "chatDisplayName");
+		return (
+			this.getDisplayNameCallback?.() ??
+			tApp(this.plugin.app, "chatDisplayName")
+		);
 	}
 
 	/**

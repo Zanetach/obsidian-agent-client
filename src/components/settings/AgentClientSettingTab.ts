@@ -994,7 +994,7 @@ export class AgentClientSettingTab extends PluginSettingTab {
 				),
 			)
 			.addTextArea((text) => {
-				text.setPlaceholder("GOOGLE_CLOUD_PROJECT=...")
+				text.setPlaceholder("Google cloud project=...")
 					.setValue(this.formatEnv(gemini.env))
 					.onChange(async (value) => {
 						this.plugin.settings.gemini.env = this.parseEnv(value);
