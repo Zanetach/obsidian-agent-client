@@ -21,6 +21,7 @@ import { InlineHeader } from "./InlineHeader";
 import { useChatController } from "../../hooks/useChatController";
 
 import { clampPosition } from "../../shared/floating-utils";
+import { tApp } from "../../shared/i18n";
 
 // ============================================================
 // Type Definitions
@@ -127,7 +128,7 @@ export class FloatingViewContainer implements IChatViewContainer {
 	// ============================================================
 
 	getDisplayName(): string {
-		return this.callbacks?.getDisplayName() ?? "Chat";
+		return this.callbacks?.getDisplayName() ?? tApp(this.plugin.app, "chatDisplayName");
 	}
 
 	onActivate(): void {
@@ -638,7 +639,7 @@ function FloatingChatComponent({
 					const success = await permission.approveActivePermission();
 					if (!success) {
 						new Notice(
-							"[Agent Client] No active permission request",
+							tApp(plugin.app, "noActivePermissionRequest"),
 						);
 					}
 				})();
@@ -660,7 +661,7 @@ function FloatingChatComponent({
 					const success = await permission.rejectActivePermission();
 					if (!success) {
 						new Notice(
-							"[Agent Client] No active permission request",
+							tApp(plugin.app, "noActivePermissionRequest"),
 						);
 					}
 				})();
@@ -736,6 +737,7 @@ function FloatingChatComponent({
 				onMouseDown={onMouseDown}
 			>
 				<InlineHeader
+					plugin={plugin}
 					variant="floating"
 					agentLabel={activeAgentLabel}
 					availableAgents={availableAgents}
